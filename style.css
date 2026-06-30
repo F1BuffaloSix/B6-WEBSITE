@@ -402,10 +402,28 @@ img { display: block; max-width: 100%; height: auto; }
     gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
-.main-sponsor-secondary.sponsor-plate { height: 140px; width: 260px; }
-.main-sponsor-secondary img { height: 114px; width: auto; max-width: 100%; object-fit: contain; }
+.main-sponsors-row .sponsor-plate {
+    flex: 0 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.main-sponsor-secondary.sponsor-plate {
+    height: 140px;
+    width: 264px;
+}
+.main-sponsor-secondary img {
+    height: 114px;
+    max-height: 114px;
+    width: auto;
+    max-width: 224px;
+    object-fit: contain;
+}
+.main-sponsors-row .main-sponsor.sponsor-plate img {
+    max-width: 260px;
+    max-height: 130px;
+}
 
 /* Sección de Resultados */
 .results-section { background: #080808; border-top: 1px solid #222; border-bottom: 1px solid #222; }
