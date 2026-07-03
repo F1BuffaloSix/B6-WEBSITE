@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     const preloader = document.getElementById('preloader');
     const loadingText = document.getElementById('loading-text');
     const percentDisplay = document.querySelector('.status-percent');
     const progressBar = document.querySelector('.loader-bar-fill');
-
+    
     if (preloader) {
         let loadProgress = 0;
         const totalDuration = 1500; 
         const intervalTime = 20;
         const increment = 100 / (totalDuration / intervalTime);
-
+        
         const loadingMessages =['INITIALIZING', 'LOADING ASSETS', 'CALIBRATING', 'READY'];
         const timer = setInterval(() => {
             loadProgress += increment;
-
+            
             if (Math.random() > 0.8 && loadingText) {
                 loadingText.innerText = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
             }
             if (loadProgress >= 100) {
                 loadProgress = 100;
                 clearInterval(timer);
-
+                
                 if(loadingText) loadingText.innerText = 'SYSTEM READY';
                 if(percentDisplay) percentDisplay.innerText = '100%';
                 if(progressBar) progressBar.style.width = '100%';
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 500);
                 }, 500);
             } else {
-                if(progressBar) progressBar.style.width = ${loadProgress}%;
-                if(percentDisplay) percentDisplay.innerText = ${Math.floor(loadProgress)}%;
+                if(progressBar) progressBar.style.width = `${loadProgress}%`;
+                if(percentDisplay) percentDisplay.innerText = `${Math.floor(loadProgress)}%`;
             }
         }, intervalTime);
     } else {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function triggerIntro() {
         const heroReveals = document.querySelectorAll('#hero[data-reveal]');
         heroReveals.forEach(el => el.classList.add('reveal-active'));
-
+        
         const headerReveals = document.querySelectorAll('.subpage-header[data-reveal]');
         headerReveals.forEach(el => el.classList.add('reveal-active'));
     }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-nav');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-
+    
     if(navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) navbar.classList.add('scrolled');
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.beginPath();
                 ctx.moveTo(px, py);
                 ctx.lineTo(sx, sy);
-                ctx.strokeStyle = rgba(255, 255, 255, ${1 - this.z / width});
+                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - this.z / width})`;
                 ctx.lineWidth = r;
                 ctx.stroke();
             }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function animate() {
             ctx.fillStyle = 'rgba(24, 23, 23, 0.4)'; 
             ctx.fillRect(0, 0, width, height);
-
+            
             stars.forEach(star => {
                 star.update();
                 star.draw();
@@ -155,16 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
     if (window.matchMedia("(min-width: 992px)").matches) {
         const btns = document.querySelectorAll('.magnetic-btn');
-
+        
         btns.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-
-                btn.style.transform = translate(${x * 0.2}px, ${y * 0.2}px);
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
                 const content = btn.querySelector('.btn-content');
-                if(content) content.style.transform = translate(${x * 0.1}px, ${y * 0.1}px);
+                if(content) content.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
             });
             btn.addEventListener('mouseleave', () => {
                 btn.style.transform = 'translate(0px, 0px)';
@@ -173,6 +173,5 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    console.log("%c BUFFALO SIX 2026 %c SYSTEM ONLINE ", "background:
-#CA130F; color:#fff; padding:5px;", "background:#000; color:#fff; padding:5px;");
+    console.log("%c BUFFALO SIX 2026 %c SYSTEM ONLINE ", "background:#CA130F; color:#fff; padding:5px;", "background:#000; color:#fff; padding:5px;");
 });
